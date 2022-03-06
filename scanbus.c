@@ -68,11 +68,11 @@ int main() {
       int result;
       uint8_t received;
       if (address_reserved(addr)) {
-        result = -1;
+        result = PICO_ERROR_GENERIC;
       } else {
         result = i2c_read_blocking(I2C0_PORT, addr, &received, 1, false);
       }
-      if (result == -1) {
+      if (result < 0) {
         printf(".");
       } else {
         printf("X");
@@ -95,11 +95,11 @@ int main() {
       int result;
       uint8_t received;
       if (address_reserved(addr)) {
-        result = -1;
+        result = PICO_ERROR_GENERIC;
       } else {
         result = i2c_read_blocking(I2C1_PORT, addr, &received, 1, false);
       }
-      if (result == -1) {
+      if (result < 0) {
         printf(".");
       } else {
         printf("X");
